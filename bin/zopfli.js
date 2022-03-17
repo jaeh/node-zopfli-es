@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const program = require('commander')
-const fs = require('fs')
-const zopfli = require('../lib/zopfli')
+import { program } from 'commander'
+import fs from 'fs'
+import zopfli from '../lib/zopfli.js'
 
 program
-  .version(require('../package.json').version)
+  .version(process.env.npm_package_version)
   .usage('[options] [files...]')
   .option('--deflate', 'raw deflate (without container)')
   .option('--zlib', 'deflate using zlib container')

@@ -3,6 +3,7 @@
   "description": "Bindings for Zopfli compressing lib. Compress gzip files 5% better than gzip.",
   "version": "1.0.7",
   "author": "Jascha Ehrenreich <j@jaeh.at>",
+  "type": "module",
   "contributors": [
     "duralog <funisher@gmail.com>",
     "MayhemYDG <stepien.nicolas@gmail.com>",

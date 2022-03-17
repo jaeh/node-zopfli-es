@@ -1,15 +1,15 @@
-const { is } = require('@magic/test')
-const fs = require('fs')
-const zlib = require('zlib')
-const util = require('util')
+import { is } from '@magic/test'
+import fs from 'fs'
+import zlib from 'zlib'
+import util from 'util'
 
-const zopfli = require('../lib/zopfli')
+import zopfli from '../lib/zopfli.js'
 
 const inflate = util.promisify(zlib.inflate)
 
 const fixture = fs.readFileSync('test/.fixtures/test.js')
 
-module.exports = [
+export default [
   { fn: zopfli.zlib(), expect: is.error, info: 'zlib without arguments returns error' },
   {
     info: 'zopfli.zlib returns buffer',

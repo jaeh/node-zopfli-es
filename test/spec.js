@@ -1,7 +1,7 @@
-const { is } = require('@magic/test')
-const zopfli = require('../lib/zopfli')
+import { is } from '@magic/test'
+import zopfli from '../lib/zopfli.js'
 
-module.exports = [
+export default [
   { fn: () => zopfli, expect: is.function },
   { fn: () => zopfli.deflate, expect: is.function },
   { fn: () => zopfli.compress, expect: is.function },

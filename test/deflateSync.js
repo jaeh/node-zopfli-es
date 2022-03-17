@@ -1,9 +1,9 @@
-const { is } = require('@magic/test')
-const fs = require('fs')
-const zlib = require('zlib')
-const util = require('util')
+import { is } from '@magic/test'
+import fs from 'fs'
+import zlib from 'zlib'
+import util from 'util'
 
-const zopfli = require('../lib/zopfli')
+import zopfli from '../lib/zopfli.js'
 
 const inflateRaw = util.promisify(zlib.inflateRaw)
 
@@ -20,7 +20,7 @@ const catchable = async (fn, ...args) => {
   console.error = oldError
 }
 
-module.exports = [
+export default [
   // {
   //   fn: zopfli.deflateSync(),
   //   expect: t => console.log(t),

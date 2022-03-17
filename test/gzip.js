@@ -1,9 +1,9 @@
-const { is } = require('@magic/test')
-const fs = require('fs')
-const zlib = require('zlib')
-const util = require('util')
+import { is } from '@magic/test'
+import fs from 'fs'
+import zlib from 'zlib'
+import util from 'util'
 
-const zopfli = require('../lib/zopfli')
+import zopfli from '../lib/zopfli.js'
 
 const gunzip = util.promisify(zlib.gunzip)
 
@@ -21,7 +21,7 @@ const catchable = async (fn, ...args) => {
   console.error = oldError
 }
 
-module.exports = [
+export default [
   { fn: catchable(zopfli.gzip), expect: is.error, info: 'gzip empty arguments returns error' },
   { fn: catchable(zopfli.gzip, 'string'), expect: is.buffer, info: 'gzip string returns buffer' },
   {

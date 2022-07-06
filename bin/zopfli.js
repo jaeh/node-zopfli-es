@@ -5,7 +5,6 @@ import fs from 'fs'
 import zopfli from '../lib/zopfli.js'
 
 program
-  .version(process.env.npm_package_version)
   .usage('[options] [files...]')
   .option('--deflate', 'raw deflate (without container)')
   .option('--zlib', 'deflate using zlib container')
@@ -14,6 +13,7 @@ program
   .option('-i, --iterations <n>', 'number of iterations (higher = smaller = slower)', parseInt)
   .option('-v, --verbose', 'Verbose')
   .parse(process.argv)
+  .version(process.env.npm_package_version)
 
 const options = {
   verbose: false,

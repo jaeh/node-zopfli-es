@@ -36,14 +36,14 @@
     "node": ">=8.11.2"
   },
   "dependencies": {
-    "commander": "9.0.0",
+    "commander": "9.2.0",
     "node-addon-api": "4.3.0",
     "node-gyp": "9.0.0"
   },
   "devDependencies": {
-    "@magic/test": "0.2.7",
+    "@magic/test": "0.2.11",
     "coveralls": "3.1.1",
-    "eslint": "8.11.0"
+    "eslint": "8.13.0"
   },
   "bin": {
     "zopfli": "bin/zopfli.js",

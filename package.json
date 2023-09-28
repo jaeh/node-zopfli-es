@@ -41,6 +41,7 @@
     "node-gyp": "9.4.0"
   },
   "devDependencies": {
+    "@magic/format": "0.0.53",
     "@magic/test": "0.2.18",
     "eslint": "8.50.0"
   },

@@ -61,8 +61,8 @@
     "lint": "eslint .",
     "test-cov": "t",
     "test": "t -p",
-    "format": "f -w",
-    "format:check": "f",
+    "format": "f -w -e zopfli",
+    "format:check": "f -e zopfli",
     "update:zopfli": "cd zopfli && git pull origin master && cd .."
   },
   "main": "lib/zopfli.js",

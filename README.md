@@ -1,6 +1,6 @@
 # node-zopfli-es
 
----------------------------------------------------------------------------
+---
 
 ## DEPRECATED!
 
@@ -15,7 +15,7 @@ created to fix some security issues which have since been resolved.
 
 Since node-zopfli is maintained again, switching back to it is advised.
 
----------------------------------------------------------------------------
+---
 
 [![NPM version][npm-image]][npm-url]
 [![Linux Build Status][travis-image]][travis-url]
@@ -27,11 +27,10 @@ Compress gzip files 5% better compared to gzip.
 
 It is considerably slower than gzip (~100x) so you may want to use it only for static content and cached resources.
 
-
 ## Prerequisites for building
 
-* Python 2.7
-* GCC and Make (Unix) or Visual Studio Express (Windows), see [Node Building tools](https://github.com/TooTallNate/node-gyp#installation)
+- Python 2.7
+- GCC and Make (Unix) or Visual Studio Express (Windows), see [Node Building tools](https://github.com/TooTallNate/node-gyp#installation)
 
 ## Install
 
@@ -46,7 +45,9 @@ npm install -g node-zopfli-es
 ```
 
 ## Usage examples
+
 ### Binary (from command line)
+
 To gzip a file
 
 ```shell
@@ -63,8 +64,7 @@ zopflipng file.png out.png
 
 ```js
 const zopfli = require('node-zopfli-es')
-fs
-  .createReadStream('file.js')
+fs.createReadStream('file.js')
   .pipe(zopfli.createGzip(options))
   .pipe(fs.createWriteStream('file.js.gz'))
 ```
@@ -80,9 +80,9 @@ new Zopfli('gzip', options)
 ```js
 const zopfli = require('node-zopfli-es')
 const input = new Buffer('I want to be compressed')
-zopfli.deflate(input, options, function(err, deflated) {})
-zopfli.zlib(input, options, function(err, zlibed) {})
-zopfli.gzip(input, options, function(err, gziped) {})
+zopfli.deflate(input, options, function (err, deflated) {})
+zopfli.zlib(input, options, function (err, zlibed) {})
+zopfli.gzip(input, options, function (err, gziped) {})
 ```
 
 #### Buffer (sync):
@@ -121,7 +121,6 @@ If no callback is provided, it returns an A+ Promise.
 
 #### gzip(input, [options = {}, callback])
 
-
 #### Options
 
 Here are the options with defaults values you can pass to zopfli:
@@ -138,17 +137,20 @@ Here are the options with defaults values you can pass to zopfli:
 ```
 
 ##### numiterations
+
 Maximum amount of times to rerun forward and backward pass to optimize LZ77 compression cost. Good values: 10, 15 for small files, 5 for files over several MB in size or it will be too slow.
 
 ##### blocksplitting
+
 If true, splits the data in multiple deflate blocks with optimal choice for the block boundaries. Block splitting gives better compression.
 
 ##### blocksplittinglast
+
 If true, chooses the optimal block split points only after doing the iterative LZ77 compression. If false, chooses the block split points first, then does iterative LZ77 on each individual block. Depending on the file, either first or last gives the best compression.
 
 ##### blocksplittingmax
-Maximum amount of blocks to split into (0 for unlimited, but this can give extreme results that hurt compression on some files).
 
+Maximum amount of blocks to split into (0 for unlimited, but this can give extreme results that hurt compression on some files).
 
 ## Build from sources
 
@@ -159,11 +161,13 @@ npm install
 ```
 
 ## Tests
+
 [@magic/test](https://github.com/magic/test) is used, you can run it with:
 
 ```shell
 npm test
 ```
+
 The npm test command also runs nyc to create coverage reports.
 
 Fast testing without coverage:
@@ -185,10 +189,13 @@ npm run format:check
 ```
 
 ## Typescript
+
 Someone pushed the type definitions to DefinitelyTyped:
+
 ```bash
 npm install @types/node-zopfli-es
 ```
+
 [Typescript definitions](https://www.npmjs.com/package/@types/node-zopfli-es)
 
 [npm-image]: https://img.shields.io/npm/v/node-zopfli-es.svg

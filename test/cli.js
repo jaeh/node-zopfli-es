@@ -2,7 +2,7 @@
 
 'use strict'
 
-import { is, tryCatch} from '@magic/test'
+import { is, tryCatch } from '@magic/test'
 
 import util from 'util'
 import path from 'path'
@@ -25,7 +25,7 @@ const before = async () => {
 export default [
   { fn: tryCatch(xc, binary), expect: is.error, info: 'fail without arguments' },
   {
-    fn: () => new Promise(r => cp.exec(`${binary} ${fixture}`,r)),
+    fn: () => new Promise(r => cp.exec(`${binary} ${fixture}`, r)),
     expect: async () => await exists(zipped),
     before,
     info: 'zipped file exists after zipping',

@@ -1,7 +1,7 @@
 {
   "name": "node-zopfli-es",
   "description": "Bindings for Zopfli compressing lib. Compress gzip files 5% better than gzip.",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": "Jascha Ehrenreich <j@jaeh.at>",
   "type": "module",
   "contributors": [

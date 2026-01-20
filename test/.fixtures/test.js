@@ -1,2 +1,2 @@
-var $ = function() {}
-$(document).ready(function() {})
+var $ = function () {}
+$(document).ready(function () {})

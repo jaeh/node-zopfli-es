@@ -63,9 +63,8 @@ if (program.args.length === 0) {
         .on('finish', resolve),
     )
 
-  Promise.all(program.args.map(mapper))
-    .catch(err => {
-      console.error('Error compressing files:', err.message)
-      process.exit(1)
-    })
+  Promise.all(program.args.map(mapper)).catch(err => {
+    console.error('Error compressing files:', err.message)
+    process.exit(1)
+  })
 }

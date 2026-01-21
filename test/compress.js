@@ -1,4 +1,4 @@
-import { is, promise } from '@magic/test'
+import { is } from '@magic/test'
 import fs from 'fs'
 import zlib from 'zlib'
 import util from 'util'
@@ -10,18 +10,6 @@ const inflate = util.promisify(zlib.inflate)
 const gunzip = util.promisify(zlib.gunzip)
 
 const fixture = fs.readFileSync('test/.fixtures/test.js')
-
-const catchable = async (fn, ...args) => {
-  const oldError = console.error
-  console.error = () => {}
-  try {
-    const res = await fn(...args)
-    return res
-  } catch (e) {
-    // return e
-  }
-  console.error = oldError
-}
 
 export default [
   {
@@ -61,22 +49,22 @@ export default [
   },
   {
     info: 'callback works as second argument',
-    fn: new Promise(r => zopfli.compress(fixture, (err, data) => r(data))),
+    fn: new Promise(r => zopfli.compress(fixture, (_err, data) => r(data))),
     expect: is.buffer,
   },
   {
     info: 'callback works as third argument',
-    fn: new Promise(r => zopfli.compress(fixture, 'zlib', (err, data) => r(data))),
+    fn: new Promise(r => zopfli.compress(fixture, 'zlib', (_err, data) => r(data))),
     expect: is.buffer,
   },
   {
     info: 'callback works as fourth argument',
-    fn: new Promise(r => zopfli.compress(fixture, 'zlib', (err, data) => r(data))),
+    fn: new Promise(r => zopfli.compress(fixture, 'zlib', (_err, data) => r(data))),
     expect: is.buffer,
   },
   {
     info: 'callback returns correct values',
-    fn: new Promise(r => zopfli.compress(fixture, 'zlib', (err, data) => r(data))),
+    fn: new Promise(r => zopfli.compress(fixture, 'zlib', (_err, data) => r(data))),
     expect: is.buffer,
   },
 ]

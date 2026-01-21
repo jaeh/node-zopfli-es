@@ -4,16 +4,16 @@ import { program } from 'commander'
 import fs from 'fs'
 import zopfli from '../lib/zopfli.js'
 
-program
-  .usage('[options] [files...]')
-  .option('--deflate', 'raw deflate (without container)')
-  .option('--zlib', 'deflate using zlib container')
-  .option('--gzip', 'deflate using gzip container')
-  .option('-e, --ext <s>', 'overwrite default file extension')
-  .option('-i, --iterations <n>', 'number of iterations (higher = smaller = slower)', parseInt)
-  .option('-v, --verbose', 'Verbose')
-  .parse(process.argv)
-  .version(process.env.npm_package_version)
+program.usage('[options] [files...]')
+program.arguments('[files...]')
+program.option('--deflate', 'raw deflate (without container)')
+program.option('--zlib', 'deflate using zlib container')
+program.option('--gzip', 'deflate using gzip container')
+program.option('-e, --ext <s>', 'overwrite default file extension')
+program.option('-i, --iterations <n>', 'number of iterations (higher = smaller = slower)', parseInt)
+program.option('-v, --verbose', 'Verbose')
+program.version(process.env.npm_package_version)
+program.parse(process.argv)
 
 const options = {
   verbose: false,
@@ -64,4 +64,8 @@ if (program.args.length === 0) {
     )
 
   Promise.all(program.args.map(mapper))
+    .catch(err => {
+      console.error('Error compressing files:', err.message)
+      process.exit(1)
+    })
 }
